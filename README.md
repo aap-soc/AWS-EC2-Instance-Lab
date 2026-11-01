@@ -39,7 +39,7 @@ Key concepts covered in this lab:
 From the AWS Management Console, navigate to **EC2** under Services. The EC2 dashboard shows running instances, costs, and resource summaries for your region.
 
 Also confirmed I was working in **eu-west-2 (London)** - always worth checking the region before launching resources, since instances, storage and networking are all region-specific.
-![AWS Management Console EC2 dashboard](Screenshots/image1.png)
+![AWS Management Console EC2 dashboard](Screenshots/image1-EC2_Console.png)
 
 
 
@@ -55,7 +55,7 @@ I clicked **Launch Instance** and worked through the configuration:
 
 **Instance name:** I named the instance **Dre Demo Server** to make it identifiable in the console.
 
-![AMI and instance type selection](Screenshots/image2.png)
+![AMI and instance type selection](Screenshots/image2-AMI_and_Instance_name.png)
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -65,7 +65,7 @@ I clicked **Launch Instance** and worked through the configuration:
 
 To authenticate access to the instance, I created a new key pair named **Dre Demo Server Key**.
 
-![Key pair creation](Screenshots/image3.png)
+![Key pair creation](Screenshots/image3-Key_Pair_creation.png)
 
 AWS generated a `.pem` private key file, which I downloaded and stored securely. This is the only way to retrieve the Windows administrator password later — if you lose this file, you cannot decrypt the password and cannot access the instance.
 
