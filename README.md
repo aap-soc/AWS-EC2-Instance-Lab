@@ -67,9 +67,9 @@ To authenticate access to the instance, I created a new key pair named **Dre Dem
 
 ![Key pair creation](Screenshots/image3-Key_Pair_creation.png)
 
-AWS generated a `.pem` private key file, which I downloaded and stored securely. This is the only way to retrieve the Windows administrator password later — if you lose this file, you cannot decrypt the password and cannot access the instance.
+AWS generated a `.pem` private key file, which I downloaded and stored securely. This is the only way to retrieve the Windows administrator password later - if you lose this file, you cannot decrypt the password and cannot access the instance.
 
-![Downloaded .pem key file](Screenshots/image4.png)
+![Downloaded .pem key file](Screenshots/image4-downloaded_pem_key_file.png)
 
 **Why this matters:** Key pairs replace password-based authentication for initial access. The public key is stored by AWS on the instance; the private key stays with you. Only someone holding the private key can decrypt the administrator password — this is a core AWS identity and access control principle.
 
@@ -81,7 +81,7 @@ I reviewed and configured the inbound security group rules. Security groups act 
 
 For this lab, I configured the security group to allow **RDP (port 3389)** inbound, which is required to connect to a Windows instance remotely.
 
-![Firewall configuration](Screenshots/image5.png)
+![Firewall Configuration](Screenshots/image5-Firewall_Configuration.png)
 
 
 **Why this matters:** In a production environment, you would restrict RDP access to a specific IP range rather than open it to all sources. Opening port 3389 to `0.0.0.0/0` (anywhere) is a well-known security risk - noted here as a deliberate lab simplification, not a recommended practice.
@@ -93,7 +93,7 @@ For this lab, I configured the security group to allow **RDP (port 3389)** inbou
 
 Before launching, I reviewed the full instance summary: AMI, instance type, key pair, network settings and security group.
 
-![Instance launch summary](Screenshots/image6.png)
+![Instance launch summary](Screenshots/image6-Instance_launch_summary.png)
 
 I clicked **Launch Instance**. The EC2 console confirmed the instance was initialising.
 
@@ -103,7 +103,7 @@ I clicked **Launch Instance**. The EC2 console confirmed the instance was initia
 
 In the EC2 dashboard under **Instances**, I confirmed the instance **Dre Demo Server** showed a status of **Running** with a public IP address assigned.
 
-![Running instance in EC2 dashboard](Screenshots/image7.png)
+![Running instance in EC2 dashboard](Screenshots/image7-Running_instance_in_EC2_dashboard.png)
 
 The dashboard shows the instance name, state, type and availabilty zone - key operational details you'd monitor in a live environment.
 
@@ -113,7 +113,7 @@ The dashboard shows the instance name, state, type and availabilty zone - key op
 
 To connect via RDP, I needed the Windows administrator password. I selected the instance, clicked **Connect → RDP Client → Get Password**, and uploaded my `.pem` private key file.
 
-![Get Windows password screen](images/image8.png)
+![Get Windows password screen](Screenshots/image8-Get_Windows_password_screen.png)
 
 AWS used the private key to decrypt and display the administrator password. This confirms the key pair mechanism is working correctly: only the holder of the private key can decrypt the password.
 
@@ -121,13 +121,9 @@ AWS used the private key to decrypt and display the administrator password. This
 
 ### Step 8 - Connect via RDP
 
-With the decrypted password in hand, I downloaded the **RDP file** from the Connect screen and opened it.
+With the decrypted password in hand, I downloaded the **RDP file** from the Connect screen and opened it. I entered the administrator credentials in the Windows Security prompt.
 
-![dowloaded perm key file](images/image9.png)
-
-I entered the administrator credentials in the Windows Security prompt.
-
-![Windows credentials prompt](images/image10.png)
+![Windows credentials prompt](Screenshots/mage9-Windows_credentials_prompt.png)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -135,7 +131,7 @@ I entered the administrator credentials in the Windows Security prompt.
 
 The RDP session connected successfully and I reached the **Windows Server 2025 desktop** on the running EC2 instance.
 
-![Connected Windows Server 2025 desktop via RDP](images/image11.png)
+![Connected Windows Server 2025 desktop via RDP](Screenshots/image10-Connected_Windows_Server_2025_desktop_via_RDP.png)
 
 This confirms end-to-end that the instance is running, the security group is correctly configured to allow RDP, the key pair decryption worked, and the credentials are valid.
 
@@ -146,7 +142,7 @@ This confirms end-to-end that the instance is running, the security group is cor
 |       Step         |                  What was done                           |
 |--------------------|----------------------------------------------------------|
 | AMI selection      | Windows Server 2025 chosen as the operating system       |
-| Instance type      | t2.micro (free tier) — 1 vCPU, 1 GB RAM                  |
+| Instance type      | t3.micro (free tier) - 1 vCPU, 1 GB RAM                  |
 | Key pair           | Created and downloaded .pem file for password decryption |
 | Security group     | Inbound RDP (port 3389) rule configured                  |
 | Launch             | Instance confirmed as running in eu-west-2 (London)      |
