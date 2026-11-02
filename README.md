@@ -123,7 +123,7 @@ AWS used the private key to decrypt and display the administrator password. This
 
 With the decrypted password in hand, I downloaded the **RDP file** from the Connect screen and opened it. I entered the administrator credentials in the Windows Security prompt.
 
-![Windows credentials prompt](Screenshots/mage9-Windows_credentials_prompt.png)
+![Windows credentials prompt](Screenshots/image8-Get_Windows_password_screen.png)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
